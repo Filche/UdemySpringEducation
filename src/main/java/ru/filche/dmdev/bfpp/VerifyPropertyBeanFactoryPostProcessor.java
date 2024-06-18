@@ -1,10 +1,12 @@
-package bfpp;
+package ru.filche.dmdev.bfpp;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.core.Ordered;
+import org.springframework.stereotype.Component;
 
+@Component
 public class VerifyPropertyBeanFactoryPostProcessor implements BeanFactoryPostProcessor, Ordered {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
@@ -13,6 +15,6 @@ public class VerifyPropertyBeanFactoryPostProcessor implements BeanFactoryPostPr
 
     @Override
     public int getOrder() {
-        return LOWEST_PRECEDENCE;
+        return 0;
     }
 }
