@@ -7,5 +7,6 @@ public class ApplicationRunner {
         ConnectionPool pool1 = context.getBean("pool1", ConnectionPool.class);
         System.out.println(pool1);
         CompanyRepository companyRepository = context.getBean("companyRepository", CompanyRepository.class);
+        context.close();
     }
 }
