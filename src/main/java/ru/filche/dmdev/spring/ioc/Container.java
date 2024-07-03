@@ -1,4 +1,4 @@
-package ru.filche.dmdev.ioc;
+package ru.filche.dmdev.spring.ioc;
 
 public class Container {
 

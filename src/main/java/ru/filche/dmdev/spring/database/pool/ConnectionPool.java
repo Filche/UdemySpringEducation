@@ -1,4 +1,4 @@
-package ru.filche.dmdev.database.pool;
+package ru.filche.dmdev.spring.database.pool;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
@@ -26,4 +26,5 @@ public class ConnectionPool {
     public void destroy(){
         System.out.println("Bean has been destroyed");
     }
+
 }

@@ -1,4 +1,4 @@
-package ru.filche.dmdev.database.repository;
+package ru.filche.dmdev.spring.database.repository;
 
 import java.util.Optional;
 

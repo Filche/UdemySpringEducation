@@ -1,23 +1,32 @@
-package ru.filche.dmdev.database.repository;
+package ru.filche.dmdev.spring.database.repository;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
-import ru.filche.dmdev.database.entity.Company;
-import ru.filche.dmdev.database.pool.ConnectionPool;
+import ru.filche.dmdev.spring.bpp.Auditing;
+import ru.filche.dmdev.spring.bpp.Transaction;
+import ru.filche.dmdev.spring.database.entity.Company;
+import ru.filche.dmdev.spring.database.pool.ConnectionPool;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
+@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+@Transaction
+@Auditing
 public class CompanyRepository implements CrudRepository<Integer, Company> {
+
     private final ConnectionPool pool1;
     private final List<ConnectionPool> pools;
     private final Integer poolSize;
 
-    @Autowired
-    public CompanyRepository(ConnectionPool pool1, List<ConnectionPool> pools,
+    public CompanyRepository(@Qualifier("pool1") ConnectionPool pool1,
+                             List<ConnectionPool> pools,
                              @Value("${db.pool.size}") Integer poolSize) {
         this.pool1 = pool1;
         this.pools = pools;

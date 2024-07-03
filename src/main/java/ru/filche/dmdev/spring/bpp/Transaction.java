@@ -1,4 +1,4 @@
-package ru.filche.dmdev.bpp;
+package ru.filche.dmdev.spring.bpp;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

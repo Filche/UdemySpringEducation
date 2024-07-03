@@ -1,4 +1,4 @@
-package ru.filche.dmdev.bpp;
+package ru.filche.dmdev.spring.bpp;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

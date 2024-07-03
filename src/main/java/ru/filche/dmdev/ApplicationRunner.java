@@ -1,11 +1,11 @@
 package ru.filche.dmdev;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.filche.dmdev.database.pool.ConnectionPool;
-import ru.filche.dmdev.database.repository.CompanyRepository;
-import ru.filche.dmdev.database.repository.CrudRepository;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ru.filche.dmdev.spring.config.ApplicationConfiguration;
+import ru.filche.dmdev.spring.database.pool.ConnectionPool;
+import ru.filche.dmdev.spring.database.repository.CrudRepository;
+import ru.filche.dmdev.spring.service.CompanyService;
 
 import java.io.Serializable;
 public class ApplicationRunner {
@@ -15,13 +15,16 @@ public class ApplicationRunner {
         System.out.println(BeanFactoryPostProcessor.class.isAssignableFrom(value.getClass()));
         System.out.println(Serializable.class.isAssignableFrom(value.getClass()));
 
-        try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml")) {
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext()) {
+            context.register(ApplicationConfiguration.class);
+            context.getEnvironment().setActiveProfiles("web","prod");
+            context.refresh();
             //      clazz -> String -> Map<String, Object>
             ConnectionPool connectionPool = context.getBean("pool1", ConnectionPool.class);
             System.out.println(connectionPool);
 
-            CrudRepository companyRepository = context.getBean("companyRepository", CrudRepository.class);
-            System.out.println(companyRepository.findById(1));
+            CompanyService companyService = context.getBean("companyService", CompanyService.class);
+            System.out.println(companyService.findById(1));
         }
     }
 }
