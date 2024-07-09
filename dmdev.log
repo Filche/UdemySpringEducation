@@ -1,0 +1,6 @@
+2024-07-09T15:58:42.670+10:00  INFO 14432 --- [main] r.f.d.s.database.pool.ConnectionPool     : Bean has been initialized
+2024-07-09T15:58:42.712+10:00  INFO 14432 --- [main] r.f.d.s.database.pool.ConnectionPool     : Bean has been initialized
+2024-07-09T15:58:42.719+10:00  INFO 14432 --- [main] r.f.d.s.database.pool.ConnectionPool     : Bean has been initialized
+2024-07-09T15:59:17.139+10:00  INFO 14432 --- [SpringApplicationShutdownHook] r.f.d.s.database.pool.ConnectionPool     : Bean has been destroyed
+2024-07-09T15:59:17.141+10:00  INFO 14432 --- [SpringApplicationShutdownHook] r.f.d.s.database.pool.ConnectionPool     : Bean has been destroyed
+2024-07-09T15:59:17.142+10:00  INFO 14432 --- [SpringApplicationShutdownHook] r.f.d.s.database.pool.ConnectionPool     : Bean has been destroyed

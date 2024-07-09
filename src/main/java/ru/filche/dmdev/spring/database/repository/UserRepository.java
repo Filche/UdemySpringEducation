@@ -1,5 +1,6 @@
 package ru.filche.dmdev.spring.database.repository;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
@@ -8,11 +9,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 @Repository
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+@RequiredArgsConstructor
 public class UserRepository {
-
+    @Qualifier("pool2")
     private final ConnectionPool pool2;
-
-    public UserRepository(@Qualifier("pool2") ConnectionPool pool2) {
-        this.pool2 = pool2;
-    }
 }

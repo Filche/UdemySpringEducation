@@ -4,24 +4,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.*;
-import org.springframework.stereotype.Component;
 import ru.filche.dmdev.spring.database.pool.ConnectionPool;
-import ru.filche.dmdev.spring.database.repository.CrudRepository;
 import ru.filche.dmdev.spring.database.repository.UserRepository;
 import ru.filche.dmdev.web.config.WebConfiguration;
 
-import static org.springframework.context.annotation.ComponentScan.Filter;
-
-@Import(WebConfiguration.class)
+@Import({WebConfiguration.class})
 @Configuration
-@ComponentScan(basePackages = "ru.filche.dmdev.spring",
-                useDefaultFilters = false,
-                includeFilters = {
-                        @Filter(type = FilterType.ANNOTATION, value = Component.class),
-                        @Filter(type = FilterType.ASSIGNABLE_TYPE, value = CrudRepository.class),
-                        @Filter(type = FilterType.REGEX, pattern ="ru\\..+Repository")
-                })
-@PropertySource("classpath:application.properties")
 public class ApplicationConfiguration {
 
     @Bean("pool2")
